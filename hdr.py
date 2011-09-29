@@ -2,44 +2,40 @@ import Image
 import ImageEnhance
 import math
 
-out = "pippo.jpg"
-
-numImg=3
-
-im=dict()
-for i in range(numImg):
-	im[i] = Image.open("%d.jpg" % (i, ))
-imOut = out
-
-image_width = im[1].size[0]
-image_height = im[1].size[1]
-
-print(image_width)
-print(image_height)
-
-p=dict()
-l=dict()
-v=dict()
-np=dict()
-
-for x in range(image_width):
-	for y in range(image_height):
-		for i in range(numImg):
-			p[i] = im[i].getpixel((x,y))
-			l[i]=math.sqrt(p[i][0]*p[i][0]+p[i][1]*p[i][1]+p[i][2]*p[i][2])/(255.0*math.sqrt(3))
-			v[i]=math.fabs(l[i]-0.5)
+class HDR:
+	
+	def __init__(self, numImg=1,out="out.jpg",blend=0.5):
+		self.blend=blend
 		
-		b = dict(map(lambda item: (item[1],item[0]),v.items()))
-		min_key = b[min(b.keys())]
+		images=[Image.open("%d.jpg" % i) for i in range(numImg)]
+		new=self.merge_all(images)
+		new.save(out)
 		
-		for i in range(3):
-			np[i]=p[min_key][i]
 
-		im[1].putpixel((x,y),(np[0],np[1],np[2]))
-
-	if x % 100 == 0:
-		print(x)
-
-im[1].save(imOut)
-
-print("end")
+	def get_masks(self,imgs):
+		masks=[]
+		masks_cnt=len(imgs)-1
+		
+		bws=[img.convert(mode='L') for img in imgs]
+		
+		for i in range(masks_cnt):
+			m=Image.blend(bws[i],bws[i+1],self.blend)
+			masks.append(m)
+		
+		return masks
+		
+	def merge(self,imgs):
+		masks=self.get_masks(imgs)
+		imx=lambda i:Image.composite(imgs[i],imgs[i+1],masks[i])
+		
+		return [imx(i) for i in range(len(masks))]
+		
+	def merge_all(self,imgs):
+		
+		while len(imgs)>1:
+			print("Curr %d" % len(imgs))
+			imgs=self.merge(imgs)
+		
+		return imgs[0]
+		
+HDR(numImg=3)
