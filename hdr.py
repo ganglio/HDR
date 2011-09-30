@@ -24,16 +24,20 @@ np=dict()
 
 for x in range(image_width):
 	for y in range(image_height):
+		l_tot=0
 		for i in range(numImg):
 			p[i] = im[i].getpixel((x,y))
-			l[i]=math.sqrt(p[i][0]*p[i][0]+p[i][1]*p[i][1]+p[i][2]*p[i][2])/(255.0*math.sqrt(3))
-			v[i]=math.fabs(l[i]-0.5)
+			l[i]=(max((p[i][0],p[i][1],p[i][2]))-min((p[i][0],p[i][1],p[i][2])))/510.0
+			l_tot+=l[i]
+			
+		for i in range(numImg):
+			v[i]=l[i]/l_tot
 		
 		b = dict(map(lambda item: (item[1],item[0]),v.items()))
-		min_key = b[min(b.keys())]
+		best_one = b[max(b.keys())]
 		
 		for i in range(3):
-			np[i]=p[min_key][i]
+			np[i]=p[best_one][i]
 
 		im[1].putpixel((x,y),(np[0],np[1],np[2]))
 
