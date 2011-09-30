@@ -22,6 +22,8 @@ l=dict()
 v=dict()
 np=dict()
 
+#comment
+
 for x in range(image_width):
 	for y in range(image_height):
 		l_tot=0
