@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import Image
 import os
 import ImageEnhance
@@ -67,6 +68,7 @@ def usage():
 def main(argv):
 	try:
 		opts, args = getopt.getopt(argv,"hf:o:",["help","folder","output"])
+		print(opts);
 		if len(opts)==0:
 			usage()
 			sys.exit(2)
