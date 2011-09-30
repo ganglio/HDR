@@ -1,0 +1,90 @@
+#!/usr/bin/python
+import Image
+import os
+import ImageEnhance
+import sys
+import argparse
+
+class HDR:
+	
+	def __init__(self, folder="",out="out.jpg",blend=0.5,order=False,debug=False):
+		self.blend=blend
+		self.debugging=debug
+		
+		if folder and os.path.isdir(folder):
+			self.debug("Reading")
+			images=[Image.open("%s/%s" %(folder,fname)) for fname in sorted(os.listdir(folder),key=None,reverse=False)]
+			
+			self.debug("Sorting")
+			images=self.sort(images,order)
+			
+			self.debug("Merging")
+			new=self.merge_all(images)
+			
+			self.debug("Saving %s" % out)
+			new.save(out)
+			
+			self.debug("Done")
+		else:
+			print("Please specify a valid folder")
+			sys.exit(2)
+	
+
+	def sort(self,imgs,order=False):
+		val=[sum(img.convert(mode="L").getdata())/(1.0*img.size[0]*img.size[1]) for img in imgs]
+		tosort=sorted(zip(val,imgs),reverse=order)
+		val, imgs=zip(*tosort)
+		
+		return imgs
+
+
+	def get_masks(self,imgs):
+		masks=[]
+		masks_cnt=len(imgs)-1
+		
+		bws=[img.convert(mode='L') for img in imgs]
+		
+		for i in range(masks_cnt):
+			self.debug("Creating mask %d of %d" % (i+1,masks_cnt))
+			
+			m=Image.blend(bws[i],bws[i+1],self.blend)
+			masks.append(m)
+		
+		return masks
+		
+
+	def merge(self,imgs):
+		masks=self.get_masks(imgs)
+		imx=lambda i:Image.composite(imgs[i],imgs[i+1],masks[i])
+		
+		return [imx(i) for i in range(len(masks))]
+		
+
+	def merge_all(self,imgs):
+		
+		while len(imgs)>1:
+			self.debug("Merging %d images" % len(imgs))
+			
+			imgs=self.merge(imgs)
+		
+		return imgs[0]
+		
+	
+	def debug(self,message):
+		if self.debugging:
+			print(message)
+		
+def main(argv):
+	parser=argparse.ArgumentParser(description="Create a High Dynamic Range photo from a set of fotos contained in a folder")
+	parser.add_argument('-f', '--folder', help='the folder from which the images will be loaded', required=True)
+	parser.add_argument('-o', '--output', help='the output file. Default: out.jpg', default='out.jpg')
+	parser.add_argument('-b', '--blend', help='the blending factor used for creating the masks. Default: 0.5', default='0.5', type=float)
+	parser.add_argument('-r', '--reverse', action='store_true', help='reverse the sorting direction')
+	parser.add_argument('-d', '--debug', action='store_true', help='prints debug information during the process')
+	parser.add_argument('-v', '--version', action='version', version='%(prog)s 1.0', help='output version information and exit')
+	
+	args=parser.parse_args(argv)
+	HDR(folder=args.folder, out=args.output, blend=args.blend, order=args.reverse, debug=args.debug)
+	
+if __name__ == "__main__":
+	main(sys.argv[1:])
