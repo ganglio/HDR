@@ -15,6 +15,7 @@ body {
 		-moz-repeating-linear-gradient(45deg, desaturate(@bgcolor,20%) 0, desaturate(@bgcolor,20%) 5px, transparent 5px, transparent 29px),
 		-moz-repeating-linear-gradient(45deg, desaturate(@bgcolor,10%) 0, desaturate(@bgcolor,10%) 5px, transparent 5px, transparent 31px),
 		-moz-repeating-linear-gradient(45deg, darken(@bgcolor,10%) 0, darken(@bgcolor,10%) 5px, transparent 5px, transparent 37px);
+	font-size: 20px;
 }
 
 #header {
@@ -23,13 +24,14 @@ body {
 	color: white;
 	font-size: 30px;
 	padding: 5px 0;
+	
+	span {
+		display: block;
+		width: 960px;
+		margin: 0 auto;
+	}
 }
 
-#header span {
-	display: block;
-	width: 960px;
-	margin: 0 auto;
-}
 
 #content {
 	width: 960px;
@@ -55,12 +57,66 @@ body {
 		}
 		hr {
 			width: 600px;
-			height: 34px;
-			border: none;
-			background: url(../images/hr.png) center center no-repeat;
+			height: 1px;
+			border-width: 1px 0 0 0;
+			border-color: #c8c8c8;
+			border-style: dotted;
+			margin: 20px auto;
 		}
 	}
 }
 
+@menucolor: #3C549E;
+@menuheight: 60px;
+@elemwidth: 150px;
+@anglesize: 20px;
 
+#menu {
+    height: @menuheight;
+    line-height: @menuheight;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding-left: @anglesize;
+    margin-left: -@anglesize;
+    position: relative;
+    background: -moz-linear-gradient(left, @menucolor 0, @menucolor @elemwidth * 4, white 100%);
+	
+	&:before {
+		content:"";
+		width: 0;
+		height: 0;
+		position: absolute;
+		top: @menuheight;
+		left:0;
+		border-color: darken(@menucolor, 20%) darken(@menucolor, 20%) transparent transparent;
+		border-style: solid;
+		border-width: @anglesize / 2;
+	}
+	
+	.element {
+    display: block;
+    float: left;
+    height: @menuheight;
+    list-style: none outside none;
+    width: @elemwidth;
+    text-align: center;
+    
+		a {
+			display: block;
+			color: #ffffff;
+			font-size: 20px;
+			text-decoration: none;
+			font-weight: bold;
+			outline: none;
+			
+			&:hover {
+				text-shadow: 0 5px 5px darken(@menucolor,20%);
+			}
+		}
+	}
+}
 
+br.clear {
+	clear: both;
+}
