@@ -10,11 +10,11 @@ body {
 	font-family: Arial, sans;
 	background-color: fadeout(@bgcolor,50%);
 	background-image:
-		-moz-linear-gradient(top left, transparent 0, transparent 50%, white 50%, white 100%),
-		-moz-repeating-linear-gradient(45deg, @bgcolor 0, @bgcolor 5px, transparent 5px, transparent 23px),
-		-moz-repeating-linear-gradient(45deg, desaturate(@bgcolor,20%) 0, desaturate(@bgcolor,20%) 5px, transparent 5px, transparent 29px),
-		-moz-repeating-linear-gradient(45deg, desaturate(@bgcolor,10%) 0, desaturate(@bgcolor,10%) 5px, transparent 5px, transparent 31px),
-		-moz-repeating-linear-gradient(45deg, darken(@bgcolor,10%) 0, darken(@bgcolor,10%) 5px, transparent 5px, transparent 37px);
+		linear-gradient(top left, transparent 0, transparent 50%, white 50%, white 100%),
+		repeating-linear-gradient(45deg, @bgcolor 0, @bgcolor 5px, transparent 5px, transparent 23px),
+		repeating-linear-gradient(45deg, desaturate(@bgcolor,20%) 0, desaturate(@bgcolor,20%) 5px, transparent 5px, transparent 29px),
+		repeating-linear-gradient(45deg, desaturate(@bgcolor,10%) 0, desaturate(@bgcolor,10%) 5px, transparent 5px, transparent 31px),
+		repeating-linear-gradient(45deg, darken(@bgcolor,10%) 0, darken(@bgcolor,10%) 5px, transparent 5px, transparent 37px);
 	font-size: 20px;
 }
 
@@ -40,7 +40,7 @@ body {
 	background: white;
 	height:900px;
 	position: relative;
-	background: -moz-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,1)), url(../images/noise.jpg);
+	background: linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,1)), url(../images/noise.jpg);
 	
 	.page {
 		p,
@@ -80,7 +80,7 @@ body {
     padding-left: @anglesize;
     margin-left: -@anglesize;
     position: relative;
-    background: -moz-linear-gradient(left, @menucolor 0, @menucolor @elemwidth * 4, white 100%);
+    background: linear-gradient(left, @menucolor 0, @menucolor @elemwidth * 4, white 100%);
 	
 	&:before {
 		content:"";
