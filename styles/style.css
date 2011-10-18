@@ -41,30 +41,28 @@ body {
 	height:900px;
 	position: relative;
 	background: linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,1)), url(../images/noise.jpg);
-	
-	.page {
-		p,
-		p.left {
-			margin: 0 0 10px 0;
-			padding: 0 10px;
-			text-align: left;
-		}
-		p.center {
-			text-align: center;
-		}
-		p.right {
-			text-align: right;
-		}
-		hr {
-			width: 600px;
-			height: 1px;
-			border-width: 1px 0 0 0;
-			border-color: #c8c8c8;
-			border-style: dotted;
-			margin: 20px auto;
+}
+
+#page {
+	section {
+		h1 {
+			
 		}
 	}
 }
+
+@titleheight: 200px;
+
+#title {
+	height: @titleheight;
+	line-height: @titleheight;
+	h1 {
+		margin: 0;
+		display: block;
+		text-align: center;
+	}
+}
+
 
 @menucolor: #3C549E;
 @menuheight: 60px;
@@ -79,6 +77,7 @@ body {
     width: 100%;
     padding-left: @anglesize;
     margin-left: -@anglesize;
+	margin-bottom: @anglesize;
     position: relative;
     background: linear-gradient(left, @menucolor 0, @menucolor @elemwidth * 4, white 100%);
 	
@@ -105,7 +104,6 @@ body {
 		a {
 			display: block;
 			color: #ffffff;
-			font-size: 20px;
 			text-decoration: none;
 			font-weight: bold;
 			outline: none;
@@ -120,3 +118,5 @@ body {
 br.clear {
 	clear: both;
 }
+
+
