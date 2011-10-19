@@ -10,35 +10,18 @@ body {
 	font-family: Arial, sans;
 	background-color: fadeout(@bgcolor,50%);
 	background-image:
-		linear-gradient(top left, transparent 0, transparent 50%, white 50%, white 100%),
+		linear-gradient(left, transparent 0, white 70%, white 100%),
 		repeating-linear-gradient(45deg, @bgcolor 0, @bgcolor 5px, transparent 5px, transparent 23px),
 		repeating-linear-gradient(45deg, desaturate(@bgcolor,20%) 0, desaturate(@bgcolor,20%) 5px, transparent 5px, transparent 29px),
 		repeating-linear-gradient(45deg, desaturate(@bgcolor,10%) 0, desaturate(@bgcolor,10%) 5px, transparent 5px, transparent 31px),
 		repeating-linear-gradient(45deg, darken(@bgcolor,10%) 0, darken(@bgcolor,10%) 5px, transparent 5px, transparent 37px);
-	font-size: 20px;
 }
-
-#header {
-	width: 100%;
-	background: #0053B3;
-	color: white;
-	font-size: 30px;
-	padding: 5px 0;
-	
-	span {
-		display: block;
-		width: 960px;
-		margin: 0 auto;
-	}
-}
-
 
 #content {
 	width: 960px;
 	margin: 0 auto;
 	box-shadow: -5px 0 5px rgba(0,0,0,0.5);
 	background: white;
-	height:900px;
 	position: relative;
 	background: linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,1)), url(../images/noise.jpg);
 }
@@ -46,21 +29,41 @@ body {
 #page {
 	section {
 		h1 {
-			
+			padding-left:50px;
+			font-size: 26px;
+			font-weight: bold;
 		}
+		p {
+			font-size: 20px;
+			text-align: justify;
+			padding: 10px 20px;
+			margin:0;
+		}
+	}
+	.closure {
+		height: 20px;
 	}
 }
 
-@titleheight: 200px;
+@headerheight: 200px;
+@footerheight: 50px;
 
-#title {
-	height: @titleheight;
-	line-height: @titleheight;
-	h1 {
-		margin: 0;
-		display: block;
-		text-align: center;
-	}
+header {
+	height: @headerheight;
+	line-height: @headerheight;
+	margin: 0;
+	display: block;
+	text-align: center;
+	font-size: 40px;
+}
+
+footer {
+	background: linear-gradient(left,fadeout(@bgcolor,30%),@bgcolor);
+	height: @footerheight;
+	line-height: @footerheight;
+	width: 100%;
+	color: darken(@bgcolor,30%);
+	text-align: center;
 }
 
 
@@ -69,17 +72,27 @@ body {
 @elemwidth: 150px;
 @anglesize: 20px;
 
+#side {
+	height:@menuheight;
+	width:50%;
+	position: absolute;
+	top:@headerheight;
+	right:0;
+	background:@menucolor;
+	z-index:0;
+}
+
 #menu {
-    height: @menuheight;
-    line-height: @menuheight;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    padding-left: @anglesize;
-    margin-left: -@anglesize;
-	margin-bottom: @anglesize;
-    position: relative;
-    background: linear-gradient(left, @menucolor 0, @menucolor @elemwidth * 4, white 100%);
+	height: @menuheight;
+	line-height: @menuheight;
+	padding: 0;
+	width: 100%;
+	padding: 0 @anglesize;
+	margin: 0 -@anglesize;
+	position: relative;
+	background: @menucolor;
+	z-index:5;
+	/*linear-gradient(left, @menucolor 0, @menucolor @elemwidth * 5, white 100%);*/
 	
 	&:before {
 		content:"";
@@ -94,12 +107,12 @@ body {
 	}
 	
 	.element {
-    display: block;
-    float: left;
-    height: @menuheight;
-    list-style: none outside none;
-    width: @elemwidth;
-    text-align: center;
+		display: block;
+		float: left;
+		height: @menuheight;
+		list-style: none outside none;
+		width: @elemwidth;
+		text-align: center;
     
 		a {
 			display: block;
@@ -107,6 +120,7 @@ body {
 			text-decoration: none;
 			font-weight: bold;
 			outline: none;
+			font-size: 24px;
 			
 			&:hover {
 				text-shadow: 0 5px 5px darken(@menucolor,20%);
@@ -115,8 +129,46 @@ body {
 	}
 }
 
-br.clear {
-	clear: both;
+@forkmecolor: #A60F0F;
+@forkmefont: #EBDB31;
+#forkme {
+	background: @forkmecolor;
+	padding: 3px 0;
+	width: 250px;
+	position: fixed;
+	transform: rotate(45deg);
+	top: 62px;
+	right:-50px;
+	display: block;
+		
+	span {
+		text-align: center;
+		color: @forkmefont;
+		text-decoration: none;
+		border-style: solid;
+		border-color: fadeout(@forkmefont,20%);
+		border-width: 1px 0;
+		font-size: 17px;
+		padding: 2px 0;
+		
+		&:first-child {
+			display:block;
+		}
+		
+		&:last-child {
+			display: none;
+		}
+	}
+
+	&:hover {
+		span:first-child {
+			display: none;
+		}
+		
+		span:last-child {
+			display: block;
+		}
+	}
 }
 
 
