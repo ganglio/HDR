@@ -2,7 +2,7 @@
 <html lang="en-GB">
 <head>
 	<meta charset="UTF-8">
-	<title>HDR Synthesizer GitHub Page</title>
+	<title>HDR Image Synthesizer</title>
 	<link rel="stylesheet/less" type="text/css" href="styles/style.css" />
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 	<script type="text/javascript" src="https://raw.github.com/cloudhead/less.js/master/dist/less-1.1.4.min.js"></script>
@@ -11,36 +11,66 @@
 </head>
 <body>
 	<div id="content">
-		<header>HDR Synthesizer</header>
+		<header>HDR Image Synthesizer</header>
 		<ul id="menu">
 			<li class="element"><a href="#overview">Overview</a></li>
-			<li class="element"><a href="#options">Options</a></li>
+			<li class="element"><a href="#options">Usage</a></li>
 			<li class="element"><a href="#examples">Examples</a></li>
 			<li class="element"><a href="#about">About</a></li>
 		</ul>
 		<div id="page">
 			<section id="overview">
 				<h1>Overview</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada nisl nec arcu auctor cursus. Nam pellentesque, odio nec dictum auctor, purus felis ultricies lorem, vel blandit nisl enim quis ligula. Maecenas a velit diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla massa vel arcu aliquet luctus. Aliquam lobortis pharetra ipsum, eget sollicitudin nisl porta ac. Donec vehicula, ipsum non tempus accumsan, lorem massa sodales purus, vehicula sagittis neque nisi vel nulla. Cras orci urna, hendrerit ut hendrerit non, placerat ut quam. Nunc lobortis fermentum lectus at venenatis. In magna urna, vestibulum in tempus eget, vulputate sed velit. Integer quis massa ut dui volutpat bibendum. Etiam feugiat suscipit arcu ut aliquam.</p>
+				<div class="description">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada nisl nec arcu auctor cursus. Nam pellentesque, odio nec dictum auctor, purus felis ultricies lorem, vel blandit nisl enim quis ligula. Maecenas a velit diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla massa vel arcu aliquet luctus. Aliquam lobortis pharetra ipsum, eget sollicitudin nisl porta ac. Donec vehicula, ipsum non tempus accumsan, lorem massa sodales purus, vehicula sagittis neque nisi vel nulla. Cras orci urna, hendrerit ut hendrerit non, placerat ut quam. Nunc lobortis fermentum lectus at venenatis. In magna urna, vestibulum in tempus eget, vulputate sed velit. Integer quis massa ut dui volutpat bibendum. Etiam feugiat suscipit arcu ut aliquam.</p>
+				</div>
 			</section>
 			
 			<section id="options">
-				<h1>Options</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada nisl nec arcu auctor cursus. Nam pellentesque, odio nec dictum auctor, purus felis ultricies lorem, vel blandit nisl enim quis ligula. Maecenas a velit diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla massa vel arcu aliquet luctus. Aliquam lobortis pharetra ipsum, eget sollicitudin nisl porta ac. Donec vehicula, ipsum non tempus accumsan, lorem massa sodales purus, vehicula sagittis neque nisi vel nulla. Cras orci urna, hendrerit ut hendrerit non, placerat ut quam. Nunc lobortis fermentum lectus at venenatis. In magna urna, vestibulum in tempus eget, vulputate sed velit. Integer quis massa ut dui volutpat bibendum. Etiam feugiat suscipit arcu ut aliquam.</p>
+				<h1>Usage</h1>
+				<div class="description">
+					<p>The command line interface is quite simple:</p>
+					<code>HDR -f originals</code>
+					<p>This will load all the images contained in the folder originals, order it by lightness and create a HDR image named out.jpg in the current folder.</p>
+					<p>The script accepts a number of options to customize its behaviour.</p>
+					<dl>
+						<dt>-h, --help</dt>
+							<dd>show the help message and exit</dd>
+						<dt>-f FOLDER, --folder FOLDER</dt>
+							<dd>the folder from which the images will be loaded</dd>
+						<dt>-o OUTPUT, --output OUTPUT</dt>
+							<dd>the output file. Default: out.jpg</dd>
+						<dt>-b BLEND, --blend BLEND</dt>
+							<dd>the blending factor used for creating the masks. Default: 0.5</dd>
+						<dt>-r, --reverse</dt>
+							<dd>reverse the sorting direction</dd>
+						<dt>-d, --debug</dt>
+							<dd>prints debug information during the process</dd>
+						<dt>-v, --version</dt>
+							<dd>output version information and exit</dd>
+					</dt>
+				</div>
+
 			</section>
 			
 			<section id="examples">
 				<h1>Examples</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada nisl nec arcu auctor cursus. Nam pellentesque, odio nec dictum auctor, purus felis ultricies lorem, vel blandit nisl enim quis ligula. Maecenas a velit diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla massa vel arcu aliquet luctus. Aliquam lobortis pharetra ipsum, eget sollicitudin nisl porta ac. Donec vehicula, ipsum non tempus accumsan, lorem massa sodales purus, vehicula sagittis neque nisi vel nulla. Cras orci urna, hendrerit ut hendrerit non, placerat ut quam. Nunc lobortis fermentum lectus at venenatis. In magna urna, vestibulum in tempus eget, vulputate sed velit. Integer quis massa ut dui volutpat bibendum. Etiam feugiat suscipit arcu ut aliquam.</p>			</section>
+				<div class="description">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada nisl nec arcu auctor cursus. Nam pellentesque, odio nec dictum auctor, purus felis ultricies lorem, vel blandit nisl enim quis ligula. Maecenas a velit diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla massa vel arcu aliquet luctus. Aliquam lobortis pharetra ipsum, eget sollicitudin nisl porta ac. Donec vehicula, ipsum non tempus accumsan, lorem massa sodales purus, vehicula sagittis neque nisi vel nulla. Cras orci urna, hendrerit ut hendrerit non, placerat ut quam. Nunc lobortis fermentum lectus at venenatis. In magna urna, vestibulum in tempus eget, vulputate sed velit. Integer quis massa ut dui volutpat bibendum. Etiam feugiat suscipit arcu ut aliquam.</p>
+				</div>
+			</section>
+					
 			
 			<section id="about">
 				<h1>About</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada nisl nec arcu auctor cursus. Nam pellentesque, odio nec dictum auctor, purus felis ultricies lorem, vel blandit nisl enim quis ligula. Maecenas a velit diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla massa vel arcu aliquet luctus. Aliquam lobortis pharetra ipsum, eget sollicitudin nisl porta ac. Donec vehicula, ipsum non tempus accumsan, lorem massa sodales purus, vehicula sagittis neque nisi vel nulla. Cras orci urna, hendrerit ut hendrerit non, placerat ut quam. Nunc lobortis fermentum lectus at venenatis. In magna urna, vestibulum in tempus eget, vulputate sed velit. Integer quis massa ut dui volutpat bibendum. Etiam feugiat suscipit arcu ut aliquam.</p>
+				<div class="description">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc malesuada nisl nec arcu auctor cursus. Nam pellentesque, odio nec dictum auctor, purus felis ultricies lorem, vel blandit nisl enim quis ligula. Maecenas a velit diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla massa vel arcu aliquet luctus. Aliquam lobortis pharetra ipsum, eget sollicitudin nisl porta ac. Donec vehicula, ipsum non tempus accumsan, lorem massa sodales purus, vehicula sagittis neque nisi vel nulla. Cras orci urna, hendrerit ut hendrerit non, placerat ut quam. Nunc lobortis fermentum lectus at venenatis. In magna urna, vestibulum in tempus eget, vulputate sed velit. Integer quis massa ut dui volutpat bibendum. Etiam feugiat suscipit arcu ut aliquam.</p>
+				</div>
 			</section>
 		</div>
 	</div>
 	<div id='side'></div>
-	<a id='forkme' href=''>
+	<a id='forkme' href='https://github.com/ganglio/HDR'>
 		<span>Fork me on GitHub</span>
 		<span>It's going to be fun!</span>
 	</a>

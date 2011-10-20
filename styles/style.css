@@ -2,6 +2,7 @@
 
 html {
 	min-height: 100%;
+	min-width: 1024px;
 }
 
 body {
@@ -32,12 +33,30 @@ body {
 			padding-left:50px;
 			font-size: 26px;
 			font-weight: bold;
+			margin: 30px 0 15px 0;
 		}
-		p {
+
+		.description {
 			font-size: 20px;
 			text-align: justify;
-			padding: 10px 20px;
+			padding: 0 20px;
 			margin:0;
+		
+			dl {
+				dt {
+					font-weight: bold;
+				}
+			}
+			p {
+				margin: 0;
+				padding: 20px 0;
+			}
+			code {
+				display: block;
+				padding: 5px;
+				background-color: lighten(@bgcolor,20%);
+				border: 1px dotted lighten(@bgcolor,5%);
+			}
 		}
 	}
 	.closure {
@@ -92,7 +111,6 @@ footer {
 	position: relative;
 	background: @menucolor;
 	z-index:5;
-	/*linear-gradient(left, @menucolor 0, @menucolor @elemwidth * 5, white 100%);*/
 	
 	&:before {
 		content:"";
@@ -113,13 +131,12 @@ footer {
 		list-style: none outside none;
 		width: @elemwidth;
 		text-align: center;
-    
+
 		a {
 			display: block;
 			color: #ffffff;
 			text-decoration: none;
 			font-weight: bold;
-			outline: none;
 			font-size: 24px;
 			
 			&:hover {
@@ -137,9 +154,10 @@ footer {
 	width: 250px;
 	position: fixed;
 	transform: rotate(45deg);
-	top: 62px;
+	top: 60px;
 	right:-50px;
 	display: block;
+	text-decoration: none;
 		
 	span {
 		text-align: center;
